@@ -6,12 +6,12 @@ import (
 )
 
 // mendaftarkan endpoint API.
-func SetupRoutes(app *fiber.App, productController *controller.ProductController,
-	customerController *controller.CustomerController) {
+func SetupRoutes(app *fiber.App, productController *controller.ProductController, customerController *controller.CustomerController, employeeController *controller.EmployeeController) {
 
 	//product routes
 	productGroup := app.Group("/products")
 	productGroup.Post("/", productController.CreateProduct)
+	productGroup.Post("/bulk", productController.CreateProductsBulk)
 	productGroup.Get("/", productController.GetAllProducts)
 	productGroup.Get("/:id", productController.GetProductsByID)
 	productGroup.Put("/:id", productController.UpdateProduct)
@@ -24,4 +24,5 @@ func SetupRoutes(app *fiber.App, productController *controller.ProductController
 	customerGroup.Get("/:id", customerController.GetCustomerByID)
 	customerGroup.Put("/:id", customerController.UpdateCustomer)
 	customerGroup.Delete("/:id", customerController.DeleteCustomer)
+
 }

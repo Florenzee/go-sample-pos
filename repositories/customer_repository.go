@@ -1,7 +1,6 @@
 package repositories
 
 import (
-	"fmt"
 	"go-sample-post/models"
 	"gorm.io/gorm"
 )
@@ -39,7 +38,6 @@ func (r *customerRepositoryImpl) GetByID(id string) (*models.Customer, error) {
 }
 
 func (r *customerRepositoryImpl) Update(id string, customer *models.Customer) error {
-	fmt.Println(id, customer.Name)
 	return r.db.Model(&models.Customer{}).Where("customer_id = ?", id).Updates(customer).Error
 }
 

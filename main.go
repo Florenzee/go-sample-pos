@@ -27,8 +27,13 @@ func main() {
 	customerService := services.NewCustomerService(customerRepo)
 	customerController := controller.NewCustomerController(customerService)
 
-	//setup routes
-	routes.SetupRoutes(app, productController, customerController)
+	//Employee
+	employeeRepo := repositories.NewEmployeeRepository(database.DB)
+	employeeService := services.NewEmployeeService(employeeRepo)
+	employeeController := controller.NewEmployeeController(employeeService)
+
+	// Setup Routes
+	routes.SetupRoutes(app, productController, customerController, employeeController)
 
 	//start server
 	err := app.Listen(":8080")
