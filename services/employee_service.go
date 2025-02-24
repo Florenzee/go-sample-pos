@@ -14,7 +14,7 @@ type EmployeeService interface {
 }
 
 type employeeServiceImpl struct {
-	EmployeeRepo repositories.EmployeeRepository
+	employeeRepo repositories.EmployeeRepository
 }
 
 func NewEmployeeService(repo repositories.EmployeeRepository) EmployeeService {
@@ -22,21 +22,21 @@ func NewEmployeeService(repo repositories.EmployeeRepository) EmployeeService {
 }
 
 func (s *employeeServiceImpl) CreateEmployee(Employee *models.Employee) error {
-	return s.EmployeeRepo.Create(Employee)
+	return s.employeeRepo.Create(Employee)
 }
 
 func (s *employeeServiceImpl) GetAllEmployee() ([]models.Employee, error) {
-	return s.EmployeeRepo.GetAll()
+	return s.employeeRepo.GetAll()
 }
 
 func (s *employeeServiceImpl) GetEmployeeByID(id string) (*models.Employee, error) {
-	return s.EmployeeRepo.GetByID(id)
+	return s.employeeRepo.GetByID(id)
 }
 
 func (s *employeeServiceImpl) UpdateEmployee(id string, Employee *models.Employee) error {
-	return s.EmployeeRepo.Update(id, Employee)
+	return s.employeeRepo.Update(id, Employee)
 }
 
 func (s *employeeServiceImpl) DeleteEmployee(id string) error {
-	return s.EmployeeRepo.Delete(id)
+	return s.employeeRepo.Delete(id)
 }

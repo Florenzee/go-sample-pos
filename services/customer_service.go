@@ -14,7 +14,7 @@ type CustomerService interface {
 }
 
 type customerServiceImpl struct {
-	Repo repositories.CustomerRepository
+	customerRepo repositories.CustomerRepository
 }
 
 func NewCustomerService(repo repositories.CustomerRepository) CustomerService {
@@ -22,21 +22,21 @@ func NewCustomerService(repo repositories.CustomerRepository) CustomerService {
 }
 
 func (s *customerServiceImpl) CreateCustomer(customer *models.Customer) error {
-	return s.Repo.Create(customer)
+	return s.customerRepo.Create(customer)
 }
 
 func (s *customerServiceImpl) GetAllCustomers() ([]models.Customer, error) {
-	return s.Repo.GetAll()
+	return s.customerRepo.GetAll()
 }
 
 func (s *customerServiceImpl) GetCustomerByID(id string) (*models.Customer, error) {
-	return s.Repo.GetByID(id)
+	return s.customerRepo.GetByID(id)
 }
 
 func (s *customerServiceImpl) UpdateCustomer(id string, customer *models.Customer) error {
-	return s.Repo.Update(id, customer)
+	return s.customerRepo.Update(id, customer)
 }
 
 func (s *customerServiceImpl) DeleteCustomer(id string) error {
-	return s.Repo.Delete(id)
+	return s.customerRepo.Delete(id)
 }

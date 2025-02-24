@@ -17,7 +17,7 @@ type ProductService interface {
 
 // implementasi service
 type productServiceImpl struct {
-	Repo repositories.ProductRepository
+	productRepo repositories.ProductRepository
 }
 
 func NewProductService(repo repositories.ProductRepository) ProductService {
@@ -25,25 +25,25 @@ func NewProductService(repo repositories.ProductRepository) ProductService {
 }
 
 func (s *productServiceImpl) CreateProduct(product *models.Product) error {
-	return s.Repo.Create(product)
+	return s.productRepo.Create(product)
 }
 
 func (s *productServiceImpl) CreateProductBulk(products *[]models.Product) error {
-	return s.Repo.CreateBulk(products)
+	return s.productRepo.CreateBulk(products)
 }
 
 func (s *productServiceImpl) GetAllProducts() ([]models.Product, error) {
-	return s.Repo.GetAll()
+	return s.productRepo.GetAll()
 }
 
 func (s *productServiceImpl) GetProductByID(id string) (*models.Product, error) {
-	return s.Repo.GetByID(id)
+	return s.productRepo.GetByID(id)
 }
 
 func (s *productServiceImpl) UpdateProduct(id string, product *models.Product) error {
-	return s.Repo.Update(id, product)
+	return s.productRepo.Update(id, product)
 }
 
 func (s *productServiceImpl) DeleteProduct(id string) error {
-	return s.Repo.Delete(id)
+	return s.productRepo.Delete(id)
 }
